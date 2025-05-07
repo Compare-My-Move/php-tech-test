@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Logger;
 
 use Monolog\Logger;
@@ -9,7 +10,7 @@ class LoggerFactory
     public static function create(): Logger
     {
         $logger = new Logger('app');
-        $logger->pushHandler(new StreamHandler(__DIR__ . '/../../logs/app.log', Logger::WARNING));
+        $logger->pushHandler(new StreamHandler(__DIR__ . '/../../logs/app.log', Logger::DEBUG));
         return $logger;
     }
 }
