@@ -1,21 +1,53 @@
 {% extends 'app.twig' %}
 
-<h1>Results</h1>
+{% block content %}
+    <h1>Matched Companies</h1>
 
-<p>You matched with <!-- NUMBER OF COMPANIES MATCHED --> </p>
+    {% if matchedCompanies is not empty %}
+        <p>We found the following companies that match your criteria:</p>
+        <ul class="company-list">
+            {% for company in matchedCompanies %}
+                <li class="company-card">
+                    <h2>{{ company.name }}</h2>
+                    
+                    <div class="summary">
+                        <p><strong>Email:</strong> <a href="mailto:{{ company.email }}">{{ company.email }}</a></p>
+                        <a href="#" class="toggle-details" data-target="details-{{ loop.index }}">More</a>
+                    </div>
 
-<div class="matches">
-    {% for company in matchedCompanies %}
-        <div class="matches__match">
-            <h3>{{ company.name }}</h3>
-            <p>{{ company.description }}</p>
-            <a href="#" class="matches__match__more">more</a>
+                    <div id="details-{{ loop.index }}" class="details hidden">
+                        <p><strong>Description:</strong> {{ company.description }}</p>
+                        <p><strong>Phone:</strong> {{ company.phone }}</p>
+                        <p><strong>Website:</strong> <a href="{{ company.website }}" target="_blank">{{ company.website }}</a></p>
+                        <p><strong>Credits Remaining:</strong> {{ company.credits }}</p>
+                        <a href="#" class="toggle-details" data-target="details-{{ loop.index }}">Hide</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No companies matched your criteria. Please try again later.</p>
+    {% endif %}
 
-            <div class="match__match__details" style="display:none">
-                <p><strong>Email:</strong> {{ company.email }}</p>
-                <p><strong>Phone:</strong> {{ company.phone }}</p>
-                <p><strong>Website:</strong> {{ company.website }}</p>
-            </div>
-        </div>
-    {% endfor %}
-</div>
+    <style>
+        .hidden { display: none; }
+        .company-list { list-style: none; padding: 0; }
+        .company-card { border: 1px solid #ccc; border-radius: 6px; padding: 1rem; margin-bottom: 1.5rem; background-color: #f9f9f9; }
+        .toggle-details { display: inline-block; margin-top: 0.5rem; color: #007BFF; cursor: pointer; text-decoration: underline; }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.toggle-details').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetId = this.dataset.target;
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        target.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
