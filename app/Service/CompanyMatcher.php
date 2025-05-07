@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Service;
-
+use PDO;
 class CompanyMatcher
 {
     private $db;
@@ -21,8 +21,8 @@ class CompanyMatcher
             SELECT DISTINCT cms.company_id
             FROM company_matching_settings cms
             JOIN companies c ON c.id = cms.company_id
-            WHERE JSON_CONTAINS(cms.postcodes, :postcode)
-              AND JSON_CONTAINS(cms.bedrooms, :bedrooms)
+            WHERE JSON_CONTAINS(cms.postcodes, JSON_QUOTE(:postcode))
+              AND JSON_CONTAINS(cms.bedrooms, JSON_QUOTE(:bedrooms))
               AND cms.type = :type
               AND c.active = 1
               AND CAST(c.credits AS UNSIGNED) > 0
@@ -30,10 +30,11 @@ class CompanyMatcher
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
-            ':postcode' => json_encode($postcodePrefix),
-            ':bedrooms' => json_encode((string)$bedrooms),
+            ':postcode' => $postcodePrefix, // Corrected: Pass the postcode prefix directly
+            ':bedrooms' => $bedrooms,     // Corrected: Pass the bedrooms directly
             ':type'     => $type
         ]);
+
 
         $companyIds = $stmt->fetchAll(\PDO::FETCH_COLUMN);
 
@@ -56,8 +57,10 @@ class CompanyMatcher
         $inClause = implode(',', array_fill(0, count($selectedIds), '?'));
         $companySql = "SELECT * FROM companies WHERE id IN ($inClause)";
         $companyStmt = $this->db->prepare($companySql);
-        $companyStmt->execute($selectedIds);
-
+        foreach ($selectedIds as $i => $id) {
+            $companyStmt->bindValue($i + 1, $id, PDO::PARAM_INT);
+        }
+        $companyStmt->execute();
         return $companyStmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
