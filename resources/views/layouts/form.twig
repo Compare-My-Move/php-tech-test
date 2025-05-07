@@ -1,145 +1,159 @@
 {% extends 'app.twig' %}
 
-<form name="form" method="post">
-	<fieldset>
-		<legend>Contact Details</legend>
-		<p>
-			<label for="first_name" class="required">First name</label>
-			<input type="text" name="first_name" id="first_name" required value="Test">
-		</p>
-		<p>
-			<label for="surname">Surname</label>
-			<input type="text" name="surname" id="surname" placeholder="" value="Customer">
-		</p>
-		<p>
-			<label for="email" class="required">Email address</label>
-			<input type="email" name="email" id="email" required value="test@email.com">
-		</p>
-		<p>
-			<label for="phone" class="required">Telephone number</label>
-			<input type="text" name="phone" id="phone" required value="00000111111">
-		</p>
-	</fieldset>
-​
-	<fieldset>
-		<legend>Address</legend>
-		<p>
-			<label for="address_line_1" class="required">Current address line 1</label>
-			<input type="text" name="address_line_1" id="address_line_1" required value="123 Current St">
-		</p>
-		<p>
-			<label for="address_line_2">Current address line 2</label>
-			<input type="text" name="address_line_2" id="address_line_2">
-		</p>
-		<p>
-			<label for="address_line_3">Current address line 3</label>
-			<input type="text" name="address_line_3" id="address_line_3">
-		</p>
-		<p>
-			<label for="address_line_4">Current address line 4</label>
-			<input type="text" name="address_line_4" id="address_line_4">
-		</p>
-		<p>
-			<label for="town" class="required">Current town/city</label>
-			<input type="text" name="town" id="town" required value="Current Town">
-		</p>
-		<p>
-			<label for="county">Current county</label>
-			<input type="text" name="county" id="county">
-		</p>
-		<p>
-			<label for="postcode" class="required">Current postcode</label>
-			<input type="text" name="postcode" id="postcode" required value="CF11 9HB">
-		</p>
-	</fieldset>
-	
-	<fieldset>
-		<legend>Your Property</legend>
-		<p>
-			<label for="type" class="required">Property type</label>
-			<span class="checker-wrap">
-				<label class="checker">
-					<input type="radio" value="apartment-flat" name="type" required>
-					<span class="radio"></span>
-					Apartment/Flat
-				</label>
-				<label class="checker">
-					<input type="radio" value="house" name="type" required checked>
-					<span class="radio"></span>
-					House
-				</label>
-				<label class="checker">
-					<input type="radio" value="bungalow" name="type" required>
-					<span class="radio"></span>
-					Bungalow
-				</label>
-			</span>
-		</p>
-		<p>
-			<label>How many bedrooms?</label>
-			<span class="checker-wrap">
-				<label class="checker">
-					<input type="radio" value="1" name="bedrooms" required>
-					<span class="radio"></span>
-					1 Bedroom
-				</label>
-				<label class="checker">
-					<input type="radio" value="2" name="bedrooms" required>
-					<span class="radio"></span>
-					2 Bedrooms
-				</label>
-				<label class="checker">
-					<input type="radio" value="3" name="bedrooms" required checked>
-					<span class="radio"></span>
-					3 Bedrooms
-				</label>
-				<label class="checker">
-					<input type="radio" value="4" name="bedrooms" required>
-					<span class="radio"></span>
-					4 Bedrooms
-				</label>
-				<label class="checker">
-					<input type="radio" value="5+" name="bedrooms" required>
-					<span class="radio"></span>
-					5 Bedrooms or more
-				</label>
-			</span>
-		</p>
-		<p>
-			<label for="property_value">Property Value</label>
-			<input type="text" id="property_value" name="property_value" required data-min="20000" data-max="10000000" value="150000">
-		</p>
-	</fieldset>
-	
-	<fieldset>
-		<legend>A Few Final Details</legend>
-		<p>
-			<label for="type" class="required">Survey type</label>
-			<span class="checker-wrap">
-				<label class="checker">
-					<input type="radio" value="homebuyer" name="type" required>
-					<span class="radio"></span>
-					HomeBuyer Survey
-				</label>
-				<label class="checker">
-					<input type="radio" value="building" name="type" required checked>
-					<span class="radio"></span>
-					Building Survey
-				</label>
-				<label class="checker">
-					<input type="radio" value="valuation" name="type" required>
-					<span class="radio"></span>
-					Valuation Survey
-				</label>
-			</span>
-		</p>
-		<p>
-			<label for="additional_information">Any other information you think we should know?</label>
-			<textarea name="additional_information" id="additional_information" rows="5"></textarea>
-		</p>
-	</fieldset>
-	
-	<p>
-		<input type="submit" name="compare" value="Compare Now">
-	</p>
-</form>
+{% block content %}
+    <form name="form" method="post">
+        <fieldset>
+            <legend>Contact Details</legend>
+            <p>
+                <label for="first_name" class="required">First name</label>
+                <input type="text" name="first_name" id="first_name" required value="Test">
+            </p>
+            <p>
+                <label for="surname">Surname</label>
+                <input type="text" name="surname" id="surname" placeholder="" value="Customer">
+            </p>
+            <p>
+                <label for="email" class="required">Email address</label>
+                <input type="email" name="email" id="email" required value="test@email.com">
+            </p>
+            <p>
+                <label for="phone" class="required">Telephone number</label>
+                <input type="text" name="phone" id="phone" required value="00000111111">
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Address</legend>
+            <p>
+                <label for="address_line_1" class="required">Current address line 1</label>
+                <input type="text" name="address_line_1" id="address_line_1" required value="123 Current St">
+            </p>
+            <p>
+                <label for="address_line_2">Current address line 2</label>
+                <input type="text" name="address_line_2" id="address_line_2">
+            </p>
+            <p>
+                <label for="address_line_3">Current address line 3</label>
+                <input type="text" name="address_line_3" id="address_line_3">
+            </p>
+            <p>
+                <label for="address_line_4">Current address line 4</label>
+                <input type="text" name="address_line_4" id="address_line_4">
+            </p>
+            <p>
+                <label for="town" class="required">Current town/city</label>
+                <input type="text" name="town" id="town" required value="Current Town">
+            </p>
+            <p>
+                <label for="county">Current county</label>
+                <input type="text" name="county" id="county">
+            </p>
+            <p>
+                <label for="postcode" class="required">Current postcode</label>
+                <input type="text" name="postcode" id="postcode" required value="CF11 9HB">
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Your Property</legend>
+            <p>
+                <label for="type" class="required">Property type</label>
+                <span class="checker-wrap">
+                    <label class="checker">
+                        <input type="radio" value="apartment-flat" name="type" required>
+                        <span class="radio"></span>
+                        Apartment/Flat
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="house" name="type" required checked>
+                        <span class="radio"></span>
+                        House
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="bungalow" name="type" required>
+                        <span class="radio"></span>
+                        Bungalow
+                    </label>
+                </span>
+            </p>
+            <p>
+                <label>How many bedrooms?</label>
+                <span class="checker-wrap">
+                    <label class="checker">
+                        <input type="radio" value="1" name="bedrooms" required>
+                        <span class="radio"></span>
+                        1 Bedroom
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="2" name="bedrooms" required>
+                        <span class="radio"></span>
+                        2 Bedrooms
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="3" name="bedrooms" required checked>
+                        <span class="radio"></span>
+                        3 Bedrooms
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="4" name="bedrooms" required>
+                        <span class="radio"></span>
+                        4 Bedrooms
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="5+" name="bedrooms" required>
+                        <span class="radio"></span>
+                        5 Bedrooms or more
+                    </label>
+                </span>
+            </p>
+            <p>
+                <label for="property_value">Property Value</label>
+                <input type="text" id="property_value" name="property_value" required data-min="20000" data-max="10000000" value="150000">
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>A Few Final Details</legend>
+            <p>
+                <label for="type" class="required">Survey type</label>
+                <span class="checker-wrap">
+                    <label class="checker">
+                        <input type="radio" value="homebuyer" name="type" required>
+                        <span class="radio"></span>
+                        HomeBuyer Survey
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="building" name="type" required checked>
+                        <span class="radio"></span>
+                        Building Survey
+                    </label>
+                    <label class="checker">
+                        <input type="radio" value="valuation" name="type" required>
+                        <span class="radio"></span>
+                        Valuation Survey
+                    </label>
+                </span>
+            </p>
+            <p>
+                <label for="additional_information">Any other information you think we should know?</label>
+                <textarea name="additional_information" id="additional_information" rows="5"></textarea>
+            </p>
+        </fieldset>
+
+        <p>
+            <input type="submit" name="compare" value="Compare Now">
+        </p>
+    </form>
+{% endblock %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form[name="form"]');
+        form.addEventListener('submit', function () {
+            const submitBtn = form.querySelector('input[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.value = 'Submitting...';
+        });
+    });
+</script>
+
