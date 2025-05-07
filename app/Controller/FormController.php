@@ -43,7 +43,7 @@ class FormController extends Controller
             }
 
             $this->render('results.twig', [
-                'companies' => $matchedCompanies,
+                'matchedCompanies' => $matchedCompanies,
             ]);
         } catch (\Exception $e) {
             $logger->error('Error processing form submission: ' . $e->getMessage());
