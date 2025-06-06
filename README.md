@@ -212,6 +212,3 @@ To extend the existing surveyor-matching form to handle conveyancing, the primar
 
 If we had known from the beginning that multiple services would need to be supported, we would have designed the system with greater abstraction from the start, ensuring service-specific logic is modular and easily extensible.
 
----
-
-This design ensures a scalable, maintainable solution while allowing flexibility for future service additions. Would you like further details or an additional breakdown of a specific part of the solution?
